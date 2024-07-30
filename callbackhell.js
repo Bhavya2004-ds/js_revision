@@ -58,7 +58,7 @@
 // })
 
 
-function purchasecake(){
+async function purchasecake(){
     return new Promise((resolve,reject)=>{
         setTimeout(   ()=>{
             console.log("cake purchased")
@@ -67,7 +67,7 @@ function purchasecake(){
     })}
 
     
-function curtaindec(){
+async function curtaindec(){
     return new Promise((resolve,reject)=>{
         setTimeout(   ()=>{
             console.log("curtain down")
@@ -75,14 +75,14 @@ function curtaindec(){
         },2000)
     })}
 
-    function balloons(){
+   async function balloons(){
         return new Promise((resolve,reject)=>{
             setTimeout(   ()=>{
                 console.log("balloons released")
             resolve()
             },2000)
         })}
-        function cakecutting(){
+    async  function cakecutting(){
             return new Promise((resolve,reject)=>{
 
                 setTimeout(   ()=>{
@@ -99,10 +99,24 @@ function curtaindec(){
     
 
 
+//promise
+// purchasecake()
+// .then(()=>curtaindec())
+// .then(()=>balloons())
+// .then(()=>cakecutting())
+// .catch((e)=>console.log(e))
+// .finally(()=>console.log("Happily ended!!"))
 
-purchasecake()
-.then(()=>curtaindec())
-.then(()=>balloons())
-.then(()=>cakecutting())
-.catch((e)=>console.log(e))
-.finally(()=>console.log("Happily ended!!"))
+//async await
+async function birthdaycelebration(){
+    try{
+        await purchasecake()
+        await curtaindec()
+        await balloons()
+        await cakecutting()
+    }
+    catch{
+        console.log("errorr")
+    }
+}
+birthdaycelebration()
